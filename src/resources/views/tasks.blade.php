@@ -9,7 +9,7 @@
                 <div class="panel-body">
                 @include('common.errors')
                     <!-- 新タスクフォーム -->
-                    <form action="{{ url('task')}}" method="POST" class="form-horizontal">
+                    <form action="{{ route('tasks.store')}}" method="POST" class="form-horizontal">
                         @csrf
                         <!-- タスク名 -->
                         <div class="form-group">
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <!-- TODO: 現在のタスク -->
-            @if (count($tasks) > 0)
+            @if (count($tasks ?? '') > 0)
     <div class="panel panel-default">
         <div class="panel-heading">
             現在のタスク
@@ -46,15 +46,24 @@
                 </thead>
                 <!-- テーブル本体 -->
                 <tbody>
-                    @foreach ($tasks as $task)
+                    @foreach ($tasks ?? '' as $task)
                         <tr>
                             <td class="table-text">
                                 <div>{{ $task->name }}</div>
                             </td>
-                            <!-- TODO: 削除ボタン -->
+                            <!--編集ボタン-->
+                            <td>
+                                    <form action="{{ route('tasks.edit',$task->id) }}" method="GET">
+                                            @csrf
+                                <span class="pull-right">
+                                   <button class="btn btn-m btn-info" >
+                                   <span class="glyphicon glyphicon-pencil"></span> 編集
+                                   </button></span>
+                                    </form>
+                            </td>
                             <!-- 削除ボタン -->
                             <td>
-                                <form action="{{ url('task/' . $task->id) }}" method="POST">
+                                <form action="{{ route('tasks.destroy',$task->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">
@@ -62,15 +71,7 @@
                                     </button>
                                 </form>
                             </td>
-                               <!-- 編集ボタン　-->
-　　<td>
-          <span class="pull-right">
-             <button class="btn btn-m btn-info" v-on:click="edit(index);">
-             <span class="glyphicon glyphicon-pencil"></span> 編集
-             </button>
-          </span>
-　　</td>
-　                    </tr>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
