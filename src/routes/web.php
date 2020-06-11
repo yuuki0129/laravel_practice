@@ -57,15 +57,15 @@ Route::resource('/tasks', 'TasksController');
 
 //  Laravelの教材コードここからスタート
 
-// Route::get('hello/{id?}/{pass?}', 'TasksController@index');
+// Route::get('hello/{id?}/{pass?}', 'HelloController@index');
 
 
-// Route::get('hello', 'TasksController@index');
-// Route::get('hello/other', 'TasksController@other');
+// Route::get('hello', 'HelloController@index');
+// Route::get('hello/other', 'HelloController@other');
 
 
 // シングルアクションコントローラ
-// // Route::get('/hello', 'TasksController');
+// Route::get('/hello', 'HelloController');
 
 // // ルートパラメータ
 // // Route::get('/hello/{msg?}',function ($msg='no message.') {
@@ -93,8 +93,8 @@ Route::resource('/tasks', 'TasksController');
 // // });
 
 
-// // Route::get('hello/{id?}', 'TasksController@index');
-// // Route::get('hello', 'TasksController@index');
-// // Route::post('hello', 'TasksController@post');
+// Route::get('hello/{id?}', 'HelloController@index');
+// Route::get('/hello', 'HelloController@index');
+// Route::post('/hello', 'HelloController@post');
 
 //  Laravelの教材コードここまで

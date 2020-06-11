@@ -1,30 +1,36 @@
 <?php
 
+// {{-- {{Laravelの教材}} --}}
+
+
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 // グローバル変数を定義
-// global $head, $style, $body, $end;
-// $head = '<html><head>';
-// $style = <<<EOF
-// <style>
-// body {font-size: 16px; color: #999; }
-// h1 {font-size: 100px; text-align: right; color: #eee;
-//     margin: -40px 0 -50px 0; }
-// </style>
-// EOF;
+global $head, $style, $body, $end;
+$head = '<html><head>';
+$style = <<<EOF
+<style>
+body {font-size: 16px; color: #999; }
+h1 {font-size: 100px; text-align: right; color: #eee;
+    margin: -40px 0 -50px 0; }
+</style>
+EOF;
 
-// $body = '</head><body>';
-// $end = '</body></html>';
+$body = '</head><body>';
+$end = '</body></html>';
 
-// // 関数
-// function tag($tag, $txt) {
-//     return "<{$tag}>" . $txt . "</{$tag}>";
-// }
+// 関数
+function tag($tag, $txt) {
+    return "<{$tag}>" . $txt . "</{$tag}>";
+}
 
 class HelloController extends Controller
 {
+    //任意パラメータ
     // public function index($id='noname', $pass='unknown') {
 
     //     return <<<EOF
@@ -52,6 +58,7 @@ class HelloController extends Controller
     // }
 
 
+
     // public function index() {
     //     global $head, $style, $body, $end;
 
@@ -71,6 +78,8 @@ class HelloController extends Controller
     //          . $end;
     //          return $html;
     // }
+
+
 
     // シングルアクションコントローラ
     // public function __invoke() {
@@ -94,6 +103,7 @@ class HelloController extends Controller
     // }
 
     
+
     // public function index($id='zero') {
     //     $data = ['msg'=>'これはコントローラから渡されたメッセージです。',
     //              'id'=>$id
@@ -132,10 +142,16 @@ class HelloController extends Controller
 
 
     public function index() {
-        return view('hello.index', ['msg'=>'']);
+        return view('hello.index');
     }
 
-    public function post(Request $request) {
-        return view('hello.index', ['msg'=>$request->msg]);
-    }
+    // public function post(Request $request) {
+    //     return view('hello.index', ['msg'=>$request->msg]);
+    // }
+
+    // public function index() {
+    //     $data = ['one', 'two', 'three', 'four', 'five'];
+    //     return view('hello.index', ['data'=>$data]);
+    // }
+
 }
